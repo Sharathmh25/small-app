@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+
+    <h1>Profiles</h1>
+
+    {% for item in profile %}
+        <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px;">
+            
+            <!-- 1. Name -->
+            <h2>{{ item.name }}</h2>
+
+            <!-- 2. Image (checks if image exists to avoid errors) -->
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" width="150">
+            {% endif %}
+
+            <!-- 3. Email -->
+            <p><strong>Email:</strong> {{ item.email }}</p>
+
+            <!-- 4. About -->
+            <p><strong>About:</strong> {{ item.about }}</p>
+
+            <!-- 5. Skills -->
+            <p><strong>Skills:</strong> {{ item.skills }}</p>
+
+        </div>
+    {% empty %}
+        <p>No profiles yet.</p>
+    {% endfor %}
+
+</body>
+</html>
